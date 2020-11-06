@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Calculator App </title>
+    <script>
+        function cal(val) {
+
+            document.getElementById('result').innerHTML += val;
+        }
+
+        function get_res() {
+
+            let new_val = eval(document.getElementById('result').innerHTML);
+            document.getElementById('result').innerHTML = new_val;
+        }
+
+        function clr() {
+            event.stopPropagation();
+            document.getElementById('result').innerHTML = "";
+        }
+    </script>
+    <style>
+        .main-container {
+            width: 50%;
+            margin: 150px auto;
+            background-color: #ffffff;
+            padding: 70px 0px;
+        }
+        
+        .table-container {
+            width: 60%;
+            border-spacing: 5px;
+            background-color: #467da0;
+            background-position: bottom;
+            border: thin;
+            height: 600px;
+            table-layout: fixed;
+            border-spacing: 0px;
+            box-sizing: border-box;
+        }
+        
+        td {
+            text-align: center;
+            text-decoration-style: solid;
+            font-size: 18px;
+            font-weight: 700;
+            border-right: 1px solid white;
+            white-space: nowrap;
+            overflow: auto;
+            -webkit-transition-duration: 0.4s;
+            /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        
+        .row-container:active td:nth-child(2),
+        .row-container1>td:active,
+        .row-container2>td:active,
+        .row-container3>td:active,
+        .row-container4>td:active {
+            -webkit-animation-name: cssAnimation;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-timing-function: ease;
+            -webkit-animation-fill-mode: forwards;
+        }
+        
+        @-webkit-keyframes cssAnimation {
+            from {
+                -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(5px);
+            }
+            to {
+                -webkit-transform: rotate(0deg) scale(2) skew(0deg) translate(5px);
+            }
+        }
+        
+        .row-container:hover td:first-child,
+        .row-container1>td:hover,
+        .row-container2>td:hover,
+        .row-container3>td:hover,
+        .row-container4>td:hover {
+            box-shadow: 0px 2px 18px 0px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        
+        .column-last {
+            background-color: #6e8cb0;
+            opacity: 0.7;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        
+        .row-container2 {
+            background-color: #4f5898;
+        }
+        
+        .row-container3 {
+            background-color: #544393;
+        }
+        
+        .row-container4 {
+            background-color: #59308f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <table class="table-container" border="1" align="center">
+            <tr class="row-container">
+                <td type="button" onclick="clr()">
+                    C
+                </td>
+                <td id="result" colspan="3"></td>
+            </tr>
+
+            <tr class="row-container1">
+                <td type="button" onclick="cal(7)">
+                    <span>7</span>
+                </td>
+                <td type="button" onclick="cal(8)">8</td>
+                <td type="button" onclick="cal(9)">9</td>
+                <td class="column-last" class="column-last" type="button" onclick="cal('/')">/</td>
+            </tr>
+
+            <tr class="row-container2">
+                <td type="button" onclick="cal(4)">4</td>
+                <td type="button" onclick="cal(5)">5</td>
+                <td type="button" onclick="cal(6)">6</td>
+                <td class="column-last" type="button" onclick="cal('*')">X</td>
+            </tr>
+
+            <tr class="row-container3">
+                <td type="button" onclick="cal(3)">3</td>
+                <td type="button" onclick="cal(2)">2</td>
+                <td type="button" onclick="cal(1)">1</td>
+                <td class="column-last" type="button" onclick="cal('-')">-</td>
+            </tr>
+
+            <tr class="row-container4">
+                <td type="button" onclick="cal(0)">0</td>
+                <td type="button" onclick="cal('.')">.</td>
+                <td type="button" onclick="get_res()">=</td>
+                <td class="column-last" type="button" onclick="cal('+')">+</td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+
+</html>
